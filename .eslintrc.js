@@ -2,7 +2,7 @@ module.exports = {
     "env": {
         "browser": true
     },
-    "extends": "google",
+    "extends": ["eslint:recommended", "google"],
     "parserOptions": {
         "ecmaVersion": 6
     },
