@@ -1,3 +1,6 @@
+/* eslint no-console: ["error", { allow: ["warn", "error"] }] */
+'use_strict';
+
 let restaurant;
 let newMap;
 
@@ -53,6 +56,7 @@ let initMap = () => {
 
 /**
  * Get current restaurant from page URL.
+ * @param {callback} callback
  */
 let fetchRestaurantFromURL = (callback) => {
     if (self.restaurant) { // restaurant already fetched!
@@ -61,7 +65,7 @@ let fetchRestaurantFromURL = (callback) => {
     }
     const id = getParameterByName('id');
     if (!id) { // no id found in URL
-        error = 'No restaurant id in URL';
+        let error = 'No restaurant id in URL';
         callback(error, null);
     } else {
         DBHelper.fetchRestaurantById(id, (error, restaurant) => {

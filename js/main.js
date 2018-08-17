@@ -1,9 +1,9 @@
-/*eslint no-console: ["error", { allow: ["warn", "error"] }] */
+/* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 
 let restaurants;
 let neighborhoods;
 let cuisines;
-let newMap;s
+let newMaps;
 let markers = [];
 
 /**
@@ -32,6 +32,7 @@ let fetchNeighborhoods = () => {
 
 /**
  * Set neighborhoods HTML.
+ * @param {callback} neighborhoods
  */
 let fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
     const select = document.getElementById('neighborhoods-select');
@@ -76,7 +77,7 @@ let fillCuisinesHTML = ((cuisines = self.cuisines) => {
 /**
  * Initialize leaflet map, called from HTML.
  */
-initMap = () => {
+let initMap = () => {
     self.newMap = L.map('map', {
         center: [40.722216, -73.987501],
         zoom: 12,
@@ -121,7 +122,7 @@ let updateRestaurants = () => {
     const cuisine = cSelect[cIndex].value;
     const neighborhood = nSelect[nIndex].value;
 
-    DBHelper.fetchRestaurantByCuisineAndNeighborhood(
+  DBHelper.fetchRestaurantByCuisineAndNeighborhood(
         cuisine,
         neighborhood,
         (error, restaurants) => {
@@ -138,6 +139,7 @@ let updateRestaurants = () => {
 
 /**
  * Clear current restaurants, their HTML and remove their map markers.
+ * @param {callback} restaurants
  */
 let resetRestaurants = (restaurants) => {
     // Remove all restaurants
@@ -155,6 +157,7 @@ let resetRestaurants = (restaurants) => {
 
 /**
  * Create all restaurants HTML and add them to the webpage.
+ * @param {callback} restaurants
  */
 let fillRestaurantsHTML = (restaurants = self.restaurants) => {
     const ul = document.getElementById('restaurants-list');
@@ -166,6 +169,8 @@ let fillRestaurantsHTML = (restaurants = self.restaurants) => {
 
 /**
  * Create restaurant HTML.
+ * @param {callback} restaurant
+ * @return {element} li
  */
 let createRestaurantHTML = (restaurant) => {
     const li = document.createElement('li');
@@ -197,6 +202,7 @@ let createRestaurantHTML = (restaurant) => {
 
 /**
  * Add markers for current restaurants to the map.
+ * @param {callback} restaurants
  */
 let addMarkersToMap = (restaurants = self.restaurants) => {
     restaurants.forEach((restaurant) => {
