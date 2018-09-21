@@ -230,7 +230,7 @@ nav h1 a {
 
 /* ====================== Restaurant Details ====================== */
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1149px) {
 .inside #map-container {
   height: 15em;
   width: 100%;
@@ -275,7 +275,7 @@ nav h1 a {
 
 }
 
-@media screen and (min-width: 901px) {
+@media screen and (min-width: 1150px) {
   .inside #map-container {
     background: blue none repeat scroll 0 0;
     height: 87%;
