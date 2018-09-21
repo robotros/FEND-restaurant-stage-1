@@ -1,8 +1,15 @@
 @charset "utf-8";
 /* CSS Document */
 
-* {
+/** {
     outline: 1px solid red;
+}*/
+
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
 }
 
 @media screen and (max-width: 475px) {
